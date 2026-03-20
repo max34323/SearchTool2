@@ -58,12 +58,12 @@ prefixes = [
 # -----------------------------
 # UI
 # -----------------------------
-st.title("🔍 Product Search Intelligence Tool")
+st.title("Search Scraper I")
 
 product = st.text_input("Enter Product Name")
 country = st.selectbox("Select Country", ["uk", "us"])
 
-if st.button("Generate Insights"):
+if st.button("Find Customer Queries"):
 
     if not product:
         st.warning("Please enter a product")
@@ -86,7 +86,7 @@ if st.button("Generate Insights"):
             f"{product} alternatives"
         ])
 
-        with st.spinner("Scraping real search queries..."):
+        with st.spinner("Scraping search queries..."):
             for q in queries:
                 suggestions = google_suggest(q, country)
 
@@ -100,7 +100,7 @@ if st.button("Generate Insights"):
 
         final = sorted(results)
 
-        st.success(f"Found {len(final)} real queries")
+        st.success(f"Found {len(final)} queries")
 
         for i, q in enumerate(final[:150], 1):
             st.write(f"{i}. {q}")
